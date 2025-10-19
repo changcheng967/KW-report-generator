@@ -1,0 +1,116 @@
+2025-10-19 16:54:02-0400: Running with following config:
+allowResignation = true
+bSizeRelProbs = 1
+bSizes = 19
+botName0 = FMSWA7
+botName1 = KW29 b18c384nbt 1018
+chosenMoveTemperature = 0.20
+chosenMoveTemperatureEarly = 0.60
+handicapCompensateKomiProb = 1.0
+handicapProb = 0.0
+hasButtons = false
+koRules = SIMPLE
+komiAuto = True
+logGamesEvery = 10
+logMoves = false
+logSearchInfo = false
+logToStdout = true
+maxMovesPerGame = 1000
+maxVisits0 = 10
+maxVisits1 = 40
+multiStoneSuicideLegals = false
+nnCacheSizePowerOfTwo = 20
+nnMaxBatchSize = 16
+nnModelFile0 = C:\Users\chang\Downloads\FMSWA7.bin.gz
+nnModelFile1 = C:\Users\chang\Downloads\KW\KW29-b18c384nbt-1018.bin
+nnMutexPoolSizePowerOfTwo = 16
+nnRandomize = true
+numBots = 2
+numGameThreads = 2
+numGamesTotal = 100
+numNNServerThreadsPerModel = 1
+numSearchThreads = 40
+resignConsecTurns = 6
+resignThreshold = -0.95
+scoringRules = AREA
+taxRules = NONE
+
+2025-10-19 16:54:02-0400: Match Engine starting...
+2025-10-19 16:54:02-0400: Git revision: 802946dbb15ab7b52f6fa18e777ec8f8f65bfaff
+2025-10-19 16:54:02-0400: nnRandSeed0 = 8735457975466134398
+2025-10-19 16:54:02-0400: After dedups: nnModelFile0 = C:\Users\chang\Downloads\FMSWA7.bin.gz useFP16 auto useNHWC auto
+2025-10-19 16:54:02-0400: Initializing neural net buffer to be size 19 * 19 exactly
+2025-10-19 16:54:06-0400: TensorRT backend thread 0: Found GPU NVIDIA GeForce RTX 5080 Laptop GPU memory 17094475776 compute capability major 12 minor 0
+2025-10-19 16:54:06-0400: TensorRT backend thread 0: Initializing (may take a long time)
+2025-10-19 16:54:10-0400: Using existing timing cache at C:\Users\chang\Downloads\katago-v1.16.3-trt10.9.0-cuda12.8-windows-x64/KataGoData/trtcache/trt-100900_gpu-99a61140_tune-63eb38c37b0b_exact19x19_batch16_fp16
+2025-10-19 16:54:19-0400: TensorRT backend thread 0: Model version 15 useFP16 = true
+2025-10-19 16:54:19-0400: TensorRT backend thread 0: Model name: FMSWA7
+2025-10-19 16:54:19-0400: nnRandSeed1 = 6919051091068128845
+2025-10-19 16:54:19-0400: After dedups: nnModelFile1 = C:\Users\chang\Downloads\KW\KW29-b18c384nbt-1018.bin useFP16 auto useNHWC auto
+2025-10-19 16:54:19-0400: Initializing neural net buffer to be size 19 * 19 exactly
+2025-10-19 16:54:19-0400: TensorRT backend thread 0: Found GPU NVIDIA GeForce RTX 5080 Laptop GPU memory 17094475776 compute capability major 12 minor 0
+2025-10-19 16:54:19-0400: TensorRT backend thread 0: Initializing (may take a long time)
+2025-10-19 16:54:25-0400: Using existing timing cache at C:\Users\chang\Downloads\katago-v1.16.3-trt10.9.0-cuda12.8-windows-x64/KataGoData/trtcache/trt-100900_gpu-99a61140_tune-04e4d48f9167_exact19x19_batch16_fp16
+2025-10-19 16:54:31-0400: TensorRT backend thread 0: Model version 14 useFP16 = true
+2025-10-19 16:54:31-0400: TensorRT backend thread 0: Model name: KW29-b18c384nbt-1018
+2025-10-19 16:54:31-0400: Loaded neural net
+2025-10-19 16:54:31-0400: Loaded all config stuff, starting matches
+2025-10-19 16:54:37-0400: Avg move time used by FMSWA7 0.0775946 37 moves
+2025-10-19 16:54:37-0400: Avg move time used by KW29 b18c384nbt 1018 0.0593158 38 moves
+2025-10-19 16:54:43-0400: Avg move time used by FMSWA7 0.0761486 74 moves
+2025-10-19 16:54:43-0400: Avg move time used by KW29 b18c384nbt 1018 0.0601184 76 moves
+2025-10-19 16:54:45-0400: Avg move time used by FMSWA7 0.0753742 163 moves
+2025-10-19 16:54:45-0400: Avg move time used by KW29 b18c384nbt 1018 0.0614242 165 moves
+2025-10-19 16:54:53-0400: Avg move time used by FMSWA7 0.0743156 225 moves
+2025-10-19 16:54:53-0400: Avg move time used by KW29 b18c384nbt 1018 0.0617982 228 moves
+2025-10-19 16:54:56-0400: Avg move time used by FMSWA7 0.0739969 325 moves
+2025-10-19 16:54:56-0400: Avg move time used by KW29 b18c384nbt 1018 0.0619113 327 moves
+2025-10-19 16:55:04-0400: Avg move time used by FMSWA7 0.0742025 400 moves
+2025-10-19 16:55:04-0400: Avg move time used by KW29 b18c384nbt 1018 0.0618483 402 moves
+2025-10-19 16:55:15-0400: Avg move time used by FMSWA7 0.074976 583 moves
+2025-10-19 16:55:15-0400: Avg move time used by KW29 b18c384nbt 1018 0.0618942 586 moves
+2025-10-19 16:55:15-0400: Started 10 games
+2025-10-19 16:55:29-0400: Avg move time used by FMSWA7 0.0743009 761 moves
+2025-10-19 16:55:29-0400: Avg move time used by KW29 b18c384nbt 1018 0.0617673 765 moves
+2025-10-19 16:55:43-0400: Avg move time used by FMSWA7 0.0740717 921 moves
+2025-10-19 16:55:43-0400: Avg move time used by KW29 b18c384nbt 1018 0.0611847 926 moves
+2025-10-19 16:56:04-0400: Avg move time used by FMSWA7 0.0741719 1239 moves
+2025-10-19 16:56:04-0400: Avg move time used by KW29 b18c384nbt 1018 0.0609261 1245 moves
+2025-10-19 16:56:22-0400: Started 20 games
+2025-10-19 16:56:35-0400: Avg move time used by FMSWA7 0.0741532 1717 moves
+2025-10-19 16:56:35-0400: Avg move time used by KW29 b18c384nbt 1018 0.060855 1724 moves
+2025-10-19 16:56:49-0400: Avg move time used by FMSWA7 0.0739061 1971 moves
+2025-10-19 16:56:49-0400: Avg move time used by KW29 b18c384nbt 1018 0.0606072 1978 moves
+2025-10-19 16:57:18-0400: Started 30 games
+2025-10-19 16:57:39-0400: Avg move time used by FMSWA7 0.0739936 2655 moves
+2025-10-19 16:57:39-0400: Avg move time used by KW29 b18c384nbt 1018 0.0604681 2666 moves
+2025-10-19 16:58:24-0400: Started 40 games
+2025-10-19 16:58:36-0400: Avg move time used by FMSWA7 0.074189 3440 moves
+2025-10-19 16:58:36-0400: Avg move time used by KW29 b18c384nbt 1018 0.0608662 3453 moves
+2025-10-19 16:59:14-0400: Avg move time used by FMSWA7 0.0739993 4030 moves
+2025-10-19 16:59:14-0400: Avg move time used by KW29 b18c384nbt 1018 0.0610443 4043 moves
+2025-10-19 16:59:14-0400: Started 50 games
+2025-10-19 17:00:09-0400: Started 60 games
+2025-10-19 17:00:47-0400: Avg move time used by FMSWA7 0.0742946 5271 moves
+2025-10-19 17:00:47-0400: Avg move time used by KW29 b18c384nbt 1018 0.0614457 5286 moves
+2025-10-19 17:01:05-0400: Started 70 games
+2025-10-19 17:02:12-0400: Started 80 games
+2025-10-19 17:02:20-0400: Avg move time used by FMSWA7 0.0748696 6634 moves
+2025-10-19 17:02:20-0400: Avg move time used by KW29 b18c384nbt 1018 0.0619323 6651 moves
+2025-10-19 17:03:11-0400: Started 90 games
+2025-10-19 17:04:03-0400: Avg move time used by FMSWA7 0.0754219 8068 moves
+2025-10-19 17:04:03-0400: Avg move time used by KW29 b18c384nbt 1018 0.0621024 8087 moves
+2025-10-19 17:04:19-0400: Started 100 games
+2025-10-19 17:04:32-0400: Match loop thread terminating
+2025-10-19 17:04:32-0400: Match loop thread terminating
+2025-10-19 17:04:32-0400: C:\Users\chang\Downloads\FMSWA7.bin.gz
+2025-10-19 17:04:32-0400: NN rows: 387146
+2025-10-19 17:04:32-0400: NN batches: 30968
+2025-10-19 17:04:32-0400: NN avg batch size: 12.5015
+2025-10-19 17:04:32-0400: GPU -1 finishing, processed 387146 rows 30968 batches
+2025-10-19 17:04:32-0400: C:\Users\chang\Downloads\KW\KW29-b18c384nbt-1018.bin
+2025-10-19 17:04:32-0400: NN rows: 633603
+2025-10-19 17:04:32-0400: NN batches: 46014
+2025-10-19 17:04:32-0400: NN avg batch size: 13.7698
+2025-10-19 17:04:32-0400: GPU -1 finishing, processed 633603 rows 46014 batches
+2025-10-19 17:04:33-0400: All cleaned up, quitting
