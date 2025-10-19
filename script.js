@@ -1,94 +1,160 @@
-function parseMatchLog(text) {
-  const results = {};
-  const avgTimeRegex = /Avg move time used by (.+?) ([0-9.]+) (\d+) moves/g;
-  let match;
-  while ((match = avgTimeRegex.exec(text)) !== null) {
-    const [_, model, time, moves] = match;
-    results[model] = { avgTime: parseFloat(time), moves: parseInt(moves) };
-  }
-  const nnRegex = /NN rows: (\d+)/g;
-  let rows = [];
-  while ((match = nnRegex.exec(text)) !== null) {
-    rows.push(parseInt(match[1]));
-  }
-  if (rows.length) results["NN_rows"] = rows;
-  return results;
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #1f2937;
+  --accent: #60a5fa;
+  --success: #34d399;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --cardGlow: rgba(96,165,250,0.12);
+  --shadow: rgba(0,0,0,0.35);
 }
 
-function parseSgfSummary(text) {
-  const results = {};
-  const eloRegex = /(.+?):\s+(-?\d+\.\d+) \+\/- (\d+\.\d+)/g;
-  let match;
-  while ((match = eloRegex.exec(text)) !== null) {
-    const name = match[1].trim();
-    results[name] = { elo: parseFloat(match[2]), error: parseFloat(match[3]) };
-  }
-  const winRegex = /([A-Za-z0-9\-\s\.]+?)\s+([0-9]+\.[0-9]+)%/g;
-  while ((match = winRegex.exec(text)) !== null) {
-    const name = match[1].trim();
-    if (!results[name]) results[name] = {};
-    results[name].winPercent = parseFloat(match[2]);
-  }
-  return results;
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-function generateReport() {
-  const matchText = document.getElementById("matchlog").value;
-  const sgfText = document.getElementById("sgfsummary").value;
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(1200px 400px at 20% 0%, rgba(96,165,250,0.14), transparent),
+              radial-gradient(1200px 400px at 80% 0%, rgba(52,211,153,0.12), transparent);
+}
 
-  const matchData = parseMatchLog(matchText);
-  const sgfData = parseSgfSummary(sgfText);
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-  let html = "<h2>📊 Report</h2>";
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--success));
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 10px 20px var(--shadow);
+}
 
-  if (Object.keys(matchData).length) {
-    html += "<h3>Match Log</h3><table><tr><th>Model</th><th>Avg Time</th><th>Moves</th></tr>";
-    for (const [model, data] of Object.entries(matchData)) {
-      if (model === "NN_rows") continue;
-      html += `<tr><td>${model}</td><td>${data.avgTime}</td><td>${data.moves}</td></tr>`;
-    }
-    html += "</table>";
-  }
+.title-group h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+}
 
-  if (Object.keys(sgfData).length) {
-    html += "<h3>Elo Summary</h3><table><tr><th>Model</th><th>Win%</th><th>Elo</th><th>Error</th></tr>";
-    for (const [model, data] of Object.entries(sgfData)) {
-      html += `<tr><td>${model}</td><td>${data.winPercent || "-"}%</td><td>${data.elo || "-"} </td><td>${data.error || "-"}</td></tr>`;
-    }
-    html += "</table>";
-  }
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-  document.getElementById("report").innerHTML = html;
-  document.getElementById("report").classList.remove("hidden");
-  document.getElementById("charts").classList.remove("hidden");
+.hero-actions { display: flex; gap: 10px; }
 
-  // Charts
-  const ctxElo = document.getElementById("eloChart").getContext("2d");
-  const ctxTime = document.getElementById("timeChart").getContext("2d");
-  const ctxWin = document.getElementById("winChart").getContext("2d");
+button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  transition: transform 0.08s ease, opacity 0.2s ease;
+}
 
-  const eloLabels = Object.keys(sgfData);
-  const eloValues = eloLabels.map(m => sgfData[m].elo || 0);
+button.secondary { background: var(--accent); }
+button.ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+button:active { transform: translateY(1px); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
 
-  new Chart(ctxElo, {
-    type: 'bar',
-    data: { labels: eloLabels, datasets: [{ label: 'Elo', data: eloValues, backgroundColor: '#3b82f6' }] },
-    options: { responsive: true }
-  });
+main { max-width: 1200px; margin: 0 auto; padding: 24px; }
 
-  const timeLabels = Object.keys(matchData).filter(m => m !== "NN_rows");
-  const timeValues = timeLabels.map(m => matchData[m].avgTime);
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 24px var(--shadow);
+  margin-bottom: 24px;
+}
 
-  new Chart(ctxTime, {
-    type: 'bar',
-    data: { labels: timeLabels, datasets: [{ label: 'Avg Move Time (s)', data: timeValues, backgroundColor: '#10b981' }] },
-    options: { responsive: true }
-  });
+.card h2 { margin-top: 0; }
 
-  const winLabels = Object.keys(sgfData);
-  const winValues = winLabels.map(m => sgfData[m].winPercent || 0);
+.hidden { display: none; }
 
-  new Chart(ctxWin, {
-    type: 'pie',
-    data: { labels: winLabels, datasets: [{ data: winValues, backgroundColor: ['#3b82f6','#f59e0b','#ef4444','#10b981'] }] },
-   
+.input-card .hint { color: var(--muted); font-size: 12px; margin-top: -8px; margin-bottom: 12px; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 980px) { .grid-2 { grid-template-columns: 1fr; } }
+
+textarea {
+  width: 100%;
+  min-height: 240px;
+  background: #0b1220;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  font-family: Consolas, monospace;
+  resize: vertical;
+}
+
+.actions { margin-top: 12px; display: flex; gap: 10px; }
+
+.table-wrap {
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 18px var(--cardGlow);
+}
+
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  position: sticky; top: 0;
+  background: #0b1220;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 700;
+  padding: 12px;
+}
+tbody td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.chart-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  background: #0b1220;
+  box-shadow: 0 8px 18px var(--cardGlow);
+}
+
+footer {
+  text-align: center;
+  padding: 18px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
