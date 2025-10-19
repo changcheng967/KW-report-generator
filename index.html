@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KW Report</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>KW Report</h1>
+    <p class="subtitle">Automatic KataGo Match & Elo Analysis</p>
+  </header>
+
+  <main>
+    <section class="input-section">
+      <h3>Paste <code>match.log</code> here:</h3>
+      <textarea id="matchlog" rows="10"></textarea>
+
+      <h3>Paste <code>summarize_sgfs.py</code> output here:</h3>
+      <textarea id="sgfsummary" rows="10"></textarea>
+
+      <button onclick="generateReport()">Generate Report</button>
+    </section>
+
+    <section id="report"></section>
+
+    <section class="charts">
+      <h2>📈 Charts</h2>
+      <div class="chart-container">
+        <canvas id="eloChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="timeChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created by <strong>changcheng967</strong> with help from <strong>Doulet Media</strong></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
