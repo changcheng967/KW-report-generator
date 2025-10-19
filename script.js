@@ -1,3 +1,4 @@
+// ------------------ Utility ------------------
 async function fetchText(path) {
   try {
     const res = await fetch(path, { cache: "no-store" });
@@ -8,6 +9,7 @@ async function fetchText(path) {
   }
 }
 
+// ------------------ Parsing ------------------
 function parseMatchLog(text) {
   const models = {};
   const avgTimeRegex = /Avg move time used by (.+?)\s+([0-9.]+)\s+(\d+)\s+moves/g;
@@ -54,6 +56,7 @@ function computeEfficiency(elo, time) {
   return (elo !== undefined && time) ? (elo / time) : null;
 }
 
+// ------------------ Load Runs ------------------
 async function loadRuns() {
   const status = document.getElementById("status");
   status.textContent = "Loading runs…";
@@ -76,10 +79,16 @@ async function loadRuns() {
     }
   }
 
+  if (results.length === 0) {
+    status.textContent = "No runs loaded.";
+    return;
+  }
+
   renderComparison(results);
   status.textContent = "Runs loaded.";
 }
 
+// ------------------ Render ------------------
 function renderComparison(runsData) {
   const tbody = document.querySelector("#comparisonTable tbody");
   tbody.innerHTML = "";
@@ -98,9 +107,9 @@ function renderComparison(runsData) {
       tr.innerHTML = `
         <td>${run.run}</td>
         <td>${model}</td>
-        <td>${data.winPercent ?? "-"}%</td>
-        <td>${data.elo ?? "-"} ${data.error ? "±" + data.error : ""}</td>
-        <td>${avgTime ?? "-"}</td>
+        <td>${data.winPercent !== undefined ? data.winPercent.toFixed(1) + "%" : "-"}</td>
+        <td>${data.elo !== undefined ? data.elo.toFixed(2) : "-"} ${data.error ? "±" + data.error.toFixed(2) : ""}</td>
+        <td>${avgTime !== undefined ? avgTime.toFixed(4) : "-"}</td>
         <td>${nnRows ?? "-"}</td>
         <td>${eff ? eff.toFixed(2) : "-"}</td>
         <td>${data.elo > 0 ? "Stronger" : "Weaker"}</td>
@@ -121,4 +130,50 @@ function renderComparison(runsData) {
   // Elo chart
   new Chart(document.getElementById("eloChart").getContext("2d"), {
     type: "bar",
-    data: { labels: eloLabels, datasets: [{
+    data: {
+      labels: eloLabels,
+      datasets: [{
+        label: "Elo",
+        data: eloValues,
+        backgroundColor: "#3b82f6"
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+
+  // Efficiency scatter
+  new Chart(document.getElementById("effChart").getContext("2d"), {
+    type: "scatter",
+    data: {
+      datasets: [{
+        label: "Efficiency",
+        data: effPoints.map(p => ({ x: p.x, y: p.y })),
+        pointBackgroundColor: "#10b981"
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const p = effPoints[ctx.dataIndex];
+              return `${p.label}: time ${p.x.toFixed(3)}s, eff ${p.y.toFixed(2)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { title: { display: true, text: "Avg move time (s)" } },
+        y: { title: { display: true, text: "Elo/sec" } }
+      }
+    }
+  });
+}
+
+// ------------------ Init ------------------
+document.getElementById("loadBtn").addEventListener("click", loadRuns);
