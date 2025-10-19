@@ -1,38 +1,37 @@
-{'input-files-or-dirs': ['C:/Users/chang/Downloads/katago_results/KW Series/KW29'], 'recursive': True, 'elo_prior_games': 100.0, 'estimate_first_player_advantage': True}
-Searching and adding files in C:/Users/chang/Downloads/katago_results/KW Series/KW29, please wait...
-Added 2 new game files from C:/Users/chang/Downloads/katago_results/KW Series/KW29
+{'input-files-or-dirs': ['C:/Users/chang/Downloads/katago_results/KW Series/KW28'], 'recursive': True, 'elo_prior_games': 100.0, 'estimate_first_player_advantage': True}
+Searching and adding files in C:/Users/chang/Downloads/katago_results/KW Series/KW28, please wait...
+Added 2 new game files from C:/Users/chang/Downloads/katago_results/KW Series/KW28
 Beginning iteration 0, cur log likelihood -347.9608035796258, last elo change None
-Beginning iteration 1, cur log likelihood -342.22303281320575, last elo change 47.48286335475554
-Beginning iteration 2, cur log likelihood -342.2209529755129, last elo change 0.9295062552352366
-Beginning iteration 3, cur log likelihood -342.22095297302246, last elo change 0.0010151878265448994
-Beginning iteration 4, cur log likelihood -342.2209529730224, last elo change 2.065589433357141e-11
-Beginning iteration 5, cur log likelihood -342.2209529730224, last elo change 0.0
-Beginning iteration 6, cur log likelihood -342.2209529730224, last elo change 0.0
+Beginning iteration 1, cur log likelihood -346.61785900082276, last elo change 23.162372368173436
+Beginning iteration 2, cur log likelihood -346.6178320814875, last elo change 0.10432563245908405
+Beginning iteration 3, cur log likelihood -346.61783208148745, last elo change 6.280136820373621e-06
+Beginning iteration 4, cur log likelihood -346.61783208148745, last elo change 0.0
+Beginning iteration 5, cur log likelihood -346.61783208148745, last elo change 0.0
 Total games: 100
 Games by player:
 FMSWA7: 100.0
-KW29 b18c384nbt 1018: 100.0
+KW28 b18c384nbt 1017: 100.0
 Wins by row player against column player:
-                            FMSWA7  KW29 b18c38
-               FMSWA7            -   70.5/100.0
- KW29 b18c384nbt 1018   29.5/100.0            -
+                            FMSWA7  KW28 b18c38
+               FMSWA7            -   60.0/100.0
+ KW28 b18c384nbt 1017   40.0/100.0            -
 Win% by row player against column player:
-                       FMSWA7  KW29 b
-               FMSWA7       -   70.5%
- KW29 b18c384nbt 1018   29.5%       -
+                       FMSWA7  KW28 b
+               FMSWA7       -   60.0%
+ KW28 b18c384nbt 1017   40.0%       -
 Elos (+/- one approx standard error):
-FMSWA7              :    48.41 +/- 25.16
-KW29 b18c384nbt 1018:   -48.41 +/- 25.16
-P1Advantage         :    -8.26 +/- 20.25
+FMSWA7              :    23.27 +/- 24.70
+KW28 b18c384nbt 1017:   -23.27 +/- 24.70
+P1Advantage         :     2.31 +/- 20.05
 Pairwise approx % likelihood of superiority of row over column:
-                       FMSWA7  KW29 b
-               FMSWA7   50.00   99.95
- KW29 b18c384nbt 1018    0.05   50.00
+                       FMSWA7  KW28 b
+               FMSWA7   50.00   94.76
+ KW28 b18c384nbt 1017    5.24   50.00
 Log10odds surprise matrix given the maximum-likelihood Elos:
 E.g. +3.0 means a 1:1000 unexpected good performance by row vs column.
 E.g. -4.0 means a 1:10000 unexpected bad performance by row vs column.
 Extreme numbers may indicate rock/paper/scissors, or Elo is not a good model for the data.
-                       FMSWA  KW29
-               FMSWA7      -    1.0
- KW29 b18c384nbt 1018   -1.0      -
+                       FMSWA  KW28
+               FMSWA7      -    0.4
+ KW28 b18c384nbt 1017   -0.4      -
 Used a prior of 100.0 games worth that each player is near Elo 0.
