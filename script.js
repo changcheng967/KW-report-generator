@@ -1,5 +1,5 @@
 // List of runs to load (folders in repo)
-const runs = ["KW28", "KW29"]; // add KW30, KW31 as you commit them
+const runs = ["KW29"]; // add KW30, KW31 as you commit them
 
 async function loadLog(path) {
   try {
