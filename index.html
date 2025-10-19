@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>KW Report Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KW Report - Automatic KataGo Match & Elo Analysis">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -17,61 +16,28 @@
         <p class="subtitle">Automatic KataGo Match & Elo Analysis</p>
       </div>
     </div>
-    <div class="hero-actions">
-      <button id="reloadBtn" class="secondary">Reload KW29</button>
-      <button id="exportBtn" class="ghost" disabled>Export CSV</button>
-    </div>
   </header>
 
   <main>
     <section class="card">
-      <h2>KW29 data</h2>
-      <p class="hint">This page automatically loads <code>KW29/match.log</code> and <code>KW29/output.log</code> from the site.</p>
-      <div id="status" class="status">Waiting to load…</div>
+      <h2>Available Runs</h2>
+      <p class="hint">This dashboard loads <code>match.log</code> and <code>output.log</code> for each run listed in <code>runs.json</code>.</p>
+      <button id="loadBtn">Load Reports</button>
+      <div id="status"></div>
     </section>
 
     <section id="summary" class="card hidden">
-      <h2>Summary tables</h2>
-
-      <h3>Match metrics (from match.log)</h3>
+      <h2>Comparison Table</h2>
       <div class="table-wrap">
-        <table id="matchTable">
+        <table id="comparisonTable">
           <thead>
             <tr>
-              <th>Model</th>
-              <th>Avg move time (s)</th>
-              <th>Total moves (sample)</th>
-              <th>NN rows (sum)</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <h3>Elo and win% (from output.log)</h3>
-      <div class="table-wrap">
-        <table id="eloTable">
-          <thead>
-            <tr>
+              <th>Run</th>
               <th>Model</th>
               <th>Win%</th>
-              <th>Elo</th>
-              <th>Elo error</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <h3>Derived metrics (baseline auto-picked)</h3>
-      <div class="table-wrap">
-        <table id="derivedTable">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Baseline</th>
-              <th>Relative speed</th>
-              <th>Elo / NN row</th>
+              <th>Elo (±err)</th>
+              <th>Avg move time (s)</th>
+              <th>NN rows</th>
               <th>Efficiency (Elo/sec)</th>
               <th>Verdict</th>
             </tr>
@@ -85,18 +51,8 @@
       <h2>Charts</h2>
       <div class="grid-2">
         <div class="chart-card">
-          <h4>Elo by model</h4>
+          <h4>Elo progression</h4>
           <canvas id="eloChart"></canvas>
-        </div>
-        <div class="chart-card">
-          <h4>Average move time by model</h4>
-          <canvas id="timeChart"></canvas>
-        </div>
-      </div>
-      <div class="grid-2">
-        <div class="chart-card">
-          <h4>Win% distribution</h4>
-          <canvas id="winChart"></canvas>
         </div>
         <div class="chart-card">
           <h4>Efficiency scatter</h4>
@@ -107,7 +63,7 @@
   </main>
 
   <footer>
-    <p>Created by <strong>changcheng967</strong> with help from <strong>Doulet Media</strong></p>
+    <p>Created by <strong>changcheng967</strong> with help from <strong>Doulet Media</strong> — powered by <strong>KataGo</strong></p>
   </footer>
 
   <script src="script.js"></script>
