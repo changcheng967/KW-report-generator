@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>KW Report</title>
+  <title>KW Report Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KW Report - Automatic KataGo Match & Elo Analysis">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -17,75 +16,27 @@
         <p class="subtitle">Automatic KataGo Match & Elo Analysis</p>
       </div>
     </div>
-    <div class="hero-actions">
-      <button id="exportBtn" class="secondary" disabled>Export CSV</button>
-      <button id="resetBtn" class="ghost">Reset</button>
-    </div>
   </header>
 
   <main>
-    <section class="card input-card">
-      <h2>Inputs</h2>
-      <div class="grid-2">
-        <div>
-          <h3>Paste match.log</h3>
-          <textarea id="matchlog" rows="14" placeholder="Paste the raw text of match.log here..."></textarea>
-          <div class="hint">Tip: Includes avg move time, NN rows, etc.</div>
-        </div>
-        <div>
-          <h3>Paste summarize_sgfs.py output</h3>
-          <textarea id="sgfsummary" rows="14" placeholder="Paste the raw text output of summarize_sgfs.py here..."></textarea>
-          <div class="hint">Tip: Includes Elo, win%, likelihoods.</div>
-        </div>
-      </div>
-      <div class="actions">
-        <button id="generateBtn">Generate Report</button>
-        <button id="addRunBtn" class="ghost">Add to Run History</button>
-      </div>
+    <section class="card">
+      <h2>Available Runs</h2>
+      <p class="hint">This dashboard automatically loads <code>match.log</code> and <code>output.log</code> from each KW folder.</p>
+      <button id="loadBtn">Load Reports</button>
     </section>
 
     <section id="summary" class="card hidden">
-      <h2>Summary tables</h2>
-
-      <h3>Match metrics (parsed from match.log)</h3>
+      <h2>Comparison Table</h2>
       <div class="table-wrap">
-        <table id="matchTable">
+        <table id="comparisonTable">
           <thead>
             <tr>
-              <th>Model</th>
-              <th>Avg move time (s)</th>
-              <th>Total moves (sample)</th>
-              <th>NN rows (sum)</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <h3>Elo and win% (parsed from summarize_sgfs.py)</h3>
-      <div class="table-wrap">
-        <table id="eloTable">
-          <thead>
-            <tr>
+              <th>Run</th>
               <th>Model</th>
               <th>Win%</th>
-              <th>Elo</th>
-              <th>Elo error</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <h3>Derived metrics (vs baseline)</h3>
-      <div class="table-wrap">
-        <table id="derivedTable">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Baseline</th>
-              <th>Relative speed</th>
-              <th>Elo / NN row</th>
+              <th>Elo (±err)</th>
+              <th>Avg move time (s)</th>
+              <th>NN rows</th>
               <th>Efficiency (Elo/sec)</th>
               <th>Verdict</th>
             </tr>
@@ -99,49 +50,13 @@
       <h2>Charts</h2>
       <div class="grid-2">
         <div class="chart-card">
-          <h4>Elo by model</h4>
+          <h4>Elo progression</h4>
           <canvas id="eloChart"></canvas>
         </div>
         <div class="chart-card">
-          <h4>Average move time by model</h4>
-          <canvas id="timeChart"></canvas>
-        </div>
-      </div>
-      <div class="grid-2">
-        <div class="chart-card">
-          <h4>Win% distribution</h4>
-          <canvas id="winChart"></canvas>
-        </div>
-        <div class="chart-card">
-          <h4>Efficiency scatter (Elo/sec vs Relative speed)</h4>
+          <h4>Efficiency scatter</h4>
           <canvas id="effChart"></canvas>
         </div>
-      </div>
-    </section>
-
-    <section id="history" class="card hidden">
-      <h2>Run history</h2>
-      <p class="hint">Add multiple runs to visualize progression over versions (e.g., KW27→KW28→KW29).</p>
-      <div class="chart-card">
-        <h4>Elo progression</h4>
-        <canvas id="historyChart"></canvas>
-      </div>
-      <div class="table-wrap">
-        <table id="historyTable">
-          <thead>
-            <tr>
-              <th>Run label</th>
-              <th>Model</th>
-              <th>Win%</th>
-              <th>Elo</th>
-              <th>Elo error</th>
-              <th>Avg move time (s)</th>
-              <th>NN rows</th>
-              <th>Efficiency (Elo/sec)</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
       </div>
     </section>
   </main>
