@@ -1,5 +1,5 @@
 // ------------------ Config ------------------
-const RUNS = ["KW29"]; // add more like "KW30" when you have them
+const RUNS = ["KW29", "KW30"]; // add more like "KW30" when you have them
 
 // ------------------ Fetch ------------------
 async function fetchText(path) {
