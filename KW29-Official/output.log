@@ -1,0 +1,37 @@
+{'input-files-or-dirs': ['C:\\Users\\chang\\Downloads\\katago_results\\Official\\KW29'], 'recursive': True, 'elo_prior_games': 100.0, 'estimate_first_player_advantage': True}
+Searching and adding files in C:\Users\chang\Downloads\katago_results\Official\KW29, please wait...
+Added 2 new game files from C:\Users\chang\Downloads\katago_results\Official\KW29
+Beginning iteration 0, cur log likelihood -347.9608035796258, last elo change None
+Beginning iteration 1, cur log likelihood -346.9942657850336, last elo change 19.688016512947417
+Beginning iteration 2, cur log likelihood -346.9942557747852, last elo change 0.06367592122199611
+Beginning iteration 3, cur log likelihood -346.9942557747851, last elo change 1.5400656075498355e-07
+Beginning iteration 4, cur log likelihood -346.9942557747851, last elo change 0.0
+Beginning iteration 5, cur log likelihood -346.9942557747851, last elo change 0.0
+Total games: 100
+Games by player:
+kata1-b18c384nbt-s9996604416-d4316597426.bin.gz: 100.0
+KW29 b18c384nbt 1018: 100.0
+Wins by row player against column player:
+                                                  kata1-b18c3  KW29 b18c38
+ kata1-b18c384nbt-s9996604416-d4316597426.bin.gz            -   58.5/100.0
+                            KW29 b18c384nbt 1018   41.5/100.0            -
+Win% by row player against column player:
+                                                  kata1-  KW29 b
+ kata1-b18c384nbt-s9996604416-d4316597426.bin.gz       -   58.5%
+                            KW29 b18c384nbt 1018   41.5%       -
+Elos (+/- one approx standard error):
+kata1-b18c384nbt-s9996604416-d4316597426.bin.gz:    19.75 +/- 24.67
+KW29 b18c384nbt 1018:   -19.75 +/- 24.67
+P1Advantage         :     1.16 +/- 20.04
+Pairwise approx % likelihood of superiority of row over column:
+                                                  kata1-  KW29 b
+ kata1-b18c384nbt-s9996604416-d4316597426.bin.gz   50.00   91.63
+                            KW29 b18c384nbt 1018    8.37   50.00
+Log10odds surprise matrix given the maximum-likelihood Elos:
+E.g. +3.0 means a 1:1000 unexpected good performance by row vs column.
+E.g. -4.0 means a 1:10000 unexpected bad performance by row vs column.
+Extreme numbers may indicate rock/paper/scissors, or Elo is not a good model for the data.
+                                                  kata1  KW29
+ kata1-b18c384nbt-s9996604416-d4316597426.bin.gz      -    0.3
+                            KW29 b18c384nbt 1018   -0.3      -
+Used a prior of 100.0 games worth that each player is near Elo 0.
